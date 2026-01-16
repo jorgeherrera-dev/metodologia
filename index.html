@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Audiolingual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 25px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #3949ab;
+        }
+
+        h1 {
+            color: #1a237e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #5c6bc0;
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        .presentation-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .slides-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide h2 {
+            color: #3949ab;
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eaf6;
+        }
+
+        .slide-content {
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .slide-content p {
+            margin-bottom: 15px;
+        }
+
+        .slide-content ul, .slide-content ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content li {
+            margin-bottom: 8px;
+        }
+
+        .example-box {
+            background-color: #e8eaf6;
+            border-left: 5px solid #3949ab;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #1a237e;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .interactive-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #3949ab;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            color: #5c6bc0;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #c5cae9;
+            z-index: 1;
+        }
+
+        .timeline-point {
+            width: 22px;
+            height: 22px;
+            background: #5c6bc0;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-point:hover {
+            transform: scale(1.2);
+        }
+
+        .timeline-point.active {
+            background: #1a237e;
+            transform: scale(1.3);
+        }
+
+        .drill-practice {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 25px;
+            border: 2px dashed #5c6bc0;
+        }
+
+        .drill-instruction {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+            font-size: 1.1rem;
+        }
+
+        .drill-example {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #c5cae9;
+        }
+
+        .drill-input {
+            padding: 12px;
+            width: 100%;
+            border: 2px solid #c5cae9;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            transition: border 0.3s ease;
+        }
+
+        .drill-input:focus {
+            outline: none;
+            border-color: #3949ab;
+        }
+
+        .drill-feedback {
+            min-height: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .drill-feedback.correct {
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.1);
+        }
+
+        .drill-feedback.incorrect {
+            color: #c62828;
+            background-color: rgba(198, 40, 40, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            background: #3949ab;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .btn:hover {
+            background: #1a237e;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #9fa8da;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #c5cae9;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .indicator:hover {
+            transform: scale(1.2);
+        }
+
+        .indicator.active {
+            background: #3949ab;
+            transform: scale(1.2);
+        }
+
+        .highlight {
+            background-color: #fff59d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .pros, .cons {
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .pros {
+            background-color: rgba(46, 125, 50, 0.1);
+            border-left: 4px solid #2e7d32;
+        }
+
+        .cons {
+            background-color: rgba(198, 40, 40, 0.1);
+            border-left: 4px solid #c62828;
+        }
+
+        .pros h3, .cons h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .cons h3 {
+            color: #c62828;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e8eaf6;
+            color: #5c6bc0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 2px solid #3949ab;
+        }
+
+        .conclusion-box h2 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .slides-container {
+                padding: 15px;
+            }
+            
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+            
+            .slide-content {
+                font-size: 1rem;
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .interactive-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                min-width: 120px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .btn-container {
+                display: flex;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .timeline {
+                margin: 15px 0;
+            }
+            
+            .timeline-point {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .drill-example {
+                font-size: 1rem;
+                padding: 10px;
+            }
+            
+            .btn {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-language"></i> El Método Audiolingual</h1>
+            <p class="subtitle">Aprender idiomas a través de la repetición y la formación de hábitos</p>
+        </header>
+
+        <div class="presentation-area">
+            <div class="slides-container">
+                <!-- Slide 1 -->
+                <div class="slide active" id="slide1">
+                    <h2>¿Qué es el Método Audiolingual?</h2>
+                    <div class="slide-content">
+                        <p>El <span class="highlight">Método Audiolingual</span> fue un enfoque revolucionario para la enseñanza de idiomas que surgió en <span class="highlight">Estados Unidos durante los años 1940-1950</span>.</p>
+                        <p>Se desarrolló principalmente por dos razones:</p>
+                        <ul>
+                            <li>La necesidad militar durante la <strong>Segunda Guerra Mundial</strong> de que los soldados aprendieran idiomas rápidamente.</li>
+                            <li>Las teorías científicas de la época: <strong>estructuralismo lingüístico</strong> y <strong>conductismo psicológico</strong>.</li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-title">Idea Central:</div>
+                            <p>Aprender un idioma es como adquirir un <strong>conjunto de hábitos</strong>. Se prioriza la <strong>destreza oral</strong> (escuchar y hablar) sobre la escrita.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Línea de tiempo en la primera diapositiva -->
+                    <div class="card" style="margin-top: 20px;">
+                        <h3><i class="fas fa-history"></i> Línea de Tiempo del Método</h3>
+                        <div class="timeline">
+                            <div class="timeline-point active" data-year="1940"></div>
+                            <div class="timeline-point" data-year="1950"></div>
+                            <div class="timeline-point" data-year="1960"></div>
+                            <div class="timeline-point" data-year="1970"></div>
+                            <div class="timeline-point" data-year="Actual"></div>
+                        </div>
+                        <div id="timeline-info">
+                            <p><strong>1940s:</strong> Surge durante la Segunda Guerra Mundial por necesidades militares ("Army Method").</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide" id="slide2">
+                    <h2>Fundamentos Teóricos</h2>
+                    <div class="slide-content">
+                        <p>El método se basaba en dos pilares teóricos:</p>
+                        <ol>
+                            <li><strong>Estructuralismo Lingüístico</strong>: Veía el lenguaje como un sistema de estructuras relacionadas que podían analizarse científicamente.</li>
+                            <li><strong>Conductismo Psicológico</strong>: Proponía que el aprendizaje ocurre a través de <span class="highlight">estímulo-respuesta-refuerzo</span>. La repetición forma hábitos.</li>
+                        </ol>
+                        <p>Para los audiolingualistas, el proceso de aprendizaje de un idioma consistía en:</p>
+                        <ul>
+                            <li>Escuchar modelos correctos</li>
+                            <li>Repetirlos hasta la memorización</li>
+                            <li>Recibir refuerzo positivo por las respuestas correctas</li>
+                            <li>Evitar errores que pudieran convertirse en malos hábitos</li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-title">Conductismo en acción:</div>
+                            <p>Estímulo: Profesor muestra una imagen de una manzana y dice "apple" → Respuesta: Estudiante repite "apple" → Refuerzo: Profesor dice "¡Muy bien!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide" id="slide3">
+                    <h2>Técnicas Principales en el Aula</h2>
+                    <div class="slide-content">
+                        <p>En una clase típica audiolingual, se utilizaban estas técnicas:</p>
+                        <ul>
+                            <li><strong>Repetición y memorización</strong>: Los estudiantes repetían diálogos modelo hasta aprenderlos de memoria.</li>
+                            <li><strong>"Drills" o ejercicios de práctica</strong>: Ejercicios estructurados para automatizar patrones lingüísticos.</li>
+                            <li><strong>Corrección inmediata de errores</strong>: Para evitar que se fijaran como malos hábitos.</li>
+                            <li><strong>Uso mínimo de la lengua materna</strong>: La clase se desarrollaba casi completamente en el idioma objetivo.</li>
+                            <li><strong>Gramática inductiva</strong>: No se enseñaban reglas explícitas; se inferían a través de ejemplos.</li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-title">Ejemplo de "Drill" de sustitución:</div>
+                            <p>Profesor: <em>"I go to the store."</em> (Indica "library")</p>
+                            <p>Estudiante: <em>"I go to the library."</em></p>
+                            <p>Profesor: <em>"Good!"</em> (refuerzo positivo)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide" id="slide4">
+                    <h2>Fortalezas y Debilidades</h2>
+                    <div class="slide-content">
+                        <div class="comparison">
+                            <div class="pros">
+                                <h3><i class="fas fa-thumbs-up"></i> Fortalezas</h3>
+                                <ul>
+                                    <li>Desarrolla buena <strong>pronunciación</strong> y <strong>entonación</strong></li>
+                                    <li>Logra <strong>fluidez oral</strong> en situaciones controladas</li>
+                                    <li>Los estudiantes memorizan <strong>estructuras útiles</strong></li>
+                                    <li>Da <strong>confianza</strong> a principiantes con frases hechas</li>
+                                    <li>Efectivo para aprendizaje en <strong>corto plazo</strong></li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h3><i class="fas fa-thumbs-down"></i> Críticas</h3>
+                                <ul>
+                                    <li><strong>Mecánico y aburrido</strong> por la repetición excesiva</li>
+                                    <li>Los estudiantes suenan como <strong>"robots"</strong></li>
+                                    <li>Poca atención a la <strong>comunicación real</strong></li>
+                                    <li>Subestima la <strong>cognición</strong> y <strong>creatividad</strong></li>
+                                    <li>Limitado para contextos <strong>no predecibles</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="example-box">
+                            <div class="example-title">Reflexión:</div>
+                            <p>El método fue muy criticado por no preparar a los estudiantes para la comunicación auténtica y espontánea fuera del aula.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="slide" id="slide5">
+                    <h2>Legado e Influencia Actual</h2>
+                    <div class="slide-content">
+                        <p>Aunque como método puro ya no se utiliza, su <span class="highlight">herencia es significativa</span> en la enseñanza moderna de idiomas:</p>
+                        <ul>
+                            <li>Muchos <strong>"drills"</strong> se usan adaptados para practicar estructuras gramaticales específicas</li>
+                            <li>La importancia de la <strong>práctica oral</strong> y <strong>pronunciación</strong> sigue vigente</li>
+                            <li>Es la base de métodos como <strong>Assimil</strong> y aplicaciones como <strong>Duolingo</strong> o <strong>Rosetta Stone</strong></li>
+                            <li>El concepto de <strong>aprender por repetición</strong> se usa en muchas plataformas digitales</li>
+                            <li>Sus técnicas se han integrado en enfoques más <strong>comunicativos</strong> y <strong>humanísticos</strong></li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-title">En la actualidad:</div>
+                            <p>Podemos ver la influencia audiolingual en las prácticas de repetición espaciada, los ejercicios de sustitución en apps, y el enfoque en frases modelo para situaciones cotidianas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: Juego de Drills -->
+                <!-- <div class="slide" id="slide6">
+                    <h2>Practica un "Drill" Audiolingual</h2>
+                    <div class="slide-content">
+                        <p>Ahora puedes experimentar cómo funcionaba un ejercicio típico de este método. Los "drills" de sustitución eran la base para automatizar estructuras gramaticales.</p>
+                        
+                        <div class="drill-practice">
+                            <div class="drill-instruction">Completa la oración siguiendo el patrón:</div>
+                            <div class="drill-example" id="drillPattern">I eat <span id="wordToReplace">apples</span> every day.</div>
+                            <p>Cambia "<span id="wordToReplaceText">apples</span>" por: <strong id="newWord">oranges</strong></p>
+                            <input type="text" class="drill-input" id="drillInput" placeholder="Escribe la oración completa aquí">
+                            <div class="btn-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <button class="btn" id="checkDrill">
+                                    <i class="fas fa-check"></i> Verificar
+                                </button>
+                                <button class="btn" id="newDrill" style="background: #5c6bc0;">
+                                    <i class="fas fa-redo"></i> Nuevo
+                                </button>
+                            </div>
+                            <div class="drill-feedback" id="drillFeedback"></div>
+                        </div>
+                        
+                        <div class="example-box" style="margin-top: 20px;">
+                            <div class="example-title">¿Cómo funciona?</div>
+                            <p>Este ejercicio simula la práctica repetitiva que caracterizaba al método. El objetivo es <strong>automatizar la estructura</strong> "I eat ______ every day" hasta que se convierta en un hábito lingüístico.</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Slide 7: Conclusión -->
+                <div class="slide" id="slide7">
+                    <h2>Conclusión</h2>
+                    <div class="conclusion-box">
+                        <div class="slide-content">
+                            <p>El <strong>Método Audiolingual</strong> representó un momento importante en la historia de la enseñanza de idiomas, marcando un antes y un después al priorizar las habilidades orales y sistematizar la práctica a través de la repetición.</p>
+                            
+                            <p>Aunque hoy lo consideramos <strong>demasiado mecánico y limitado</strong> para la comunicación real, su legado perdura en muchas técnicas que seguimos utilizando de forma adaptada.</p>
+                            
+                            <p>Lo más valioso que nos deja este método es la comprensión de que:</p>
+                            <ul>
+                                <li>La <strong>práctica sistemática</strong> es esencial para el aprendizaje</li>
+                                <li>La <strong>pronunciación</strong> y <strong>fluidez oral</strong> merecen atención especial</li>
+                                <li>Los <strong>hábitos lingüísticos</strong> se forman mediante repetición</li>
+                                <li>Todo método debe <strong>equilibrar estructura con comunicación auténtica</strong></li>
+                            </ul>
+                            
+                            <p>En la enseñanza moderna, hemos aprendido a <strong>integrar lo mejor del Audiolingual</strong> (práctica controlada, enfoque en la pronunciación) con enfoques más comunicativos que preparan a los estudiantes para usar el idioma en contextos reales y diversos.</p>
+                            
+                            <p style="text-align: center; font-style: italic; margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 10px;">
+                                <strong>El Método Audiolingual nos recuerda que, en la enseñanza de idiomas, el equilibrio entre estructura y comunicación es la clave del éxito.</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="btn-container">
+                        <button class="btn" id="prevBtn" disabled>
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button class="btn" id="nextBtn">
+                            Siguiente <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="slide-indicators" id="slideIndicators">
+                        <!-- Los indicadores se generan con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Presentación Método Audiolingual • Jorge Eduardo Herrera Garcia</p>
+            <p style="margin-top: 10px;"><i class="fas fa-laptop-code"></i> Be Wise English School</p>
+        </footer>
+    </div>
+
+    <script>
+        // Variables para control de presentación
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideIndicators = document.getElementById('slideIndicators');
+        const timelinePoints = document.querySelectorAll('.timeline-point');
+        const timelineInfo = document.getElementById('timeline-info');
+        
+        // Datos para la línea de tiempo
+        const timelineData = {
+            0: "<p><strong>1940s:</strong> Surge durante la Segunda Guerra Mundial por necesidades militares ('Army Method').</p>",
+            1: "<p><strong>1950s:</strong> Se consolida como método formal. Influenciado por el estructuralismo de Bloomfield y el conductismo de Skinner.</p>",
+            2: "<p><strong>1960s:</strong> Alcanza su máxima popularidad. Se implementa masivamente en institutos de idiomas y escuelas.</p>",
+            3: "<p><strong>1970s:</strong> Comienza a ser criticado y desplazado por enfoques más comunicativos y humanísticos.</p>",
+            4: "<p><strong>Actualidad:</strong> Su legado persiste en técnicas adaptadas dentro de métodos comunicativos y aplicaciones digitales.</p>"
+        };
+        
+        // Datos para los ejercicios de drill
+        const drills = [
+            {pattern: "I eat [apples] every day.", replace: "apples", with: "oranges", answer: "I eat oranges every day."},
+            {pattern: "She reads [books] in the library.", replace: "books", with: "magazines", answer: "She reads magazines in the library."},
+            {pattern: "We watch [movies] on weekends.", replace: "movies", with: "series", answer: "We watch series on weekends."},
+            {pattern: "He plays [soccer] with his friends.", replace: "soccer", with: "basketball", answer: "He plays basketball with his friends."},
+            {pattern: "They study [English] at school.", replace: "English", with: "French", answer: "They study French at school."},
+            {pattern: "I drink [coffee] in the morning.", replace: "coffee", with: "tea", answer: "I drink tea in the morning."},
+            {pattern: "She works [at the office] every day.", replace: "at the office", with: "from home", answer: "She works from home every day."}
+        ];
+        
+        let currentDrill = 0;
+        
+        // Inicializar indicadores de diapositivas
+        function initSlideIndicators() {
+            slideIndicators.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+                indicator.dataset.slide = i;
+                indicator.addEventListener('click', () => goToSlide(i));
+                slideIndicators.appendChild(indicator);
+            }
+        }
+        
+        // Cambiar a una diapositiva específica
+        function goToSlide(slideIndex) {
+            // Ocultar todas las diapositivas
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Mostrar la diapositiva seleccionada
+            slides[slideIndex].classList.add('active');
+            
+            // Actualizar indicadores
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === slideIndex);
+            });
+            
+            // Actualizar botones
+            prevBtn.disabled = slideIndex === 0;
+            nextBtn.disabled = slideIndex === totalSlides - 1;
+            
+            // Actualizar línea de tiempo si estamos en la primera diapositiva
+            if (slideIndex === 0 && timelinePoints.length > 0) {
+                // La línea de tiempo ya está activa por defecto en la primera diapositiva
+            }
+            
+            // Si estamos en la diapositiva de drills, inicializar uno nuevo
+            if (slideIndex === 5) {
+                initDrill();
+                document.getElementById('drillInput').focus();
+            }
+            
+            currentSlide = slideIndex;
+        }
+        
+        // Inicializar ejercicios de drill
+        function initDrill() {
+            currentDrill = Math.floor(Math.random() * drills.length);
+            const drill = drills[currentDrill];
+            document.getElementById('drillPattern').innerHTML = drill.pattern.replace(`[${drill.replace}]`, `<span id="wordToReplace">${drill.replace}</span>`);
+            document.getElementById('wordToReplaceText').textContent = drill.replace;
+            document.getElementById('newWord').textContent = drill.with;
+            document.getElementById('drillInput').value = '';
+            document.getElementById('drillFeedback').textContent = '';
+            document.getElementById('drillFeedback').className = 'drill-feedback';
+        }
+        
+        // Verificar respuesta del drill
+        function checkDrillAnswer() {
+            const userAnswer = document.getElementById('drillInput').value.trim();
+            const correctAnswer = drills[currentDrill].answer;
+            const feedback = document.getElementById('drillFeedback');
+            
+            if (userAnswer === '') {
+                feedback.textContent = 'Por favor, escribe tu respuesta.';
+                feedback.className = 'drill-feedback';
+                return;
+            }
+            
+            // Comparación flexible (ignorar diferencias de capitalización y espacios extra)
+            const normalizedUserAnswer = userAnswer.toLowerCase().replace(/\s+/g, ' ');
+            const normalizedCorrectAnswer = correctAnswer.toLowerCase().replace(/\s+/g, ' ');
+            
+            if (normalizedUserAnswer === normalizedCorrectAnswer) {
+                feedback.textContent = '¡Correcto! Has aplicado bien el patrón audiolingual.';
+                feedback.className = 'drill-feedback correct';
+            } else {
+                feedback.textContent = `Casi. La respuesta correcta es: "${correctAnswer}". Intenta con el siguiente ejercicio.`;
+                feedback.className = 'drill-feedback incorrect';
+            }
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar presentación
+            initSlideIndicators();
+            
+            // Navegación de diapositivas
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) goToSlide(currentSlide - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+            });
+            
+            // Línea de tiempo interactiva
+            timelinePoints.forEach((point, index) => {
+                point.addEventListener('click', () => {
+                    timelinePoints.forEach(p => p.classList.remove('active'));
+                    point.classList.add('active');
+                    
+                    if (timelineData[index]) {
+                        timelineInfo.innerHTML = timelineData[index];
+                    }
+                });
+            });
+            
+            // Ejercicio de drill
+            document.getElementById('checkDrill').addEventListener('click', checkDrillAnswer);
+            
+            document.getElementById('newDrill').addEventListener('click', () => {
+                initDrill();
+            });
+            
+            document.getElementById('drillInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkDrillAnswer();
+                }
+            });
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                } else if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                    goToSlide(currentSlide + 1);
+                }
+            });
+            
+            // Navegación táctil para móviles
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                // Deslizar a la derecha (anterior)
+                if (diff > swipeThreshold && currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                }
+                // Deslizar a la izquierda (siguiente)
+                else if (diff < -swipeThreshold && currentSlide < totalSlides - 1) {
+                    goToSlide(currentSlide + 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

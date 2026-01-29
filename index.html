@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guerra Fría: Los Años 50</title>
+    <title>El Método Audiolingual</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
             color: #f0f0f0;
             min-height: 100vh;
             padding: 20px;
@@ -42,13 +42,13 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(220, 53, 69, 0.3);
+            border: 1px solid rgba(76, 175, 80, 0.3);
         }
 
         header h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, #dc3545, #ff6b6b);
+            background: linear-gradient(90deg, #4caf50, #81c784);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -80,7 +80,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid #dc3545;
+            border: 3px solid #4caf50;
         }
 
         .intro-image img {
@@ -100,11 +100,11 @@
             padding: 30px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            border-left: 5px solid #dc3545;
+            border-left: 5px solid #4caf50;
         }
 
         .intro-text h2 {
-            color: #ff6b6b;
+            color: #81c784;
             margin-bottom: 20px;
             font-size: 2rem;
         }
@@ -123,11 +123,11 @@
         }
 
         .fact {
-            background: rgba(220, 53, 69, 0.15);
+            background: rgba(76, 175, 80, 0.15);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(220, 53, 69, 0.3);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -137,7 +137,7 @@
 
         .fact i {
             font-size: 2rem;
-            color: #ff6b6b;
+            color: #81c784;
             margin-bottom: 10px;
         }
 
@@ -146,10 +146,8 @@
             margin-bottom: 10px;
         }
 
-        /* Línea de tiempo */
-        .timeline {
-            position: relative;
-            padding: 40px 0;
+        /* Página 2: Características principales */
+        .features-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -157,7 +155,7 @@
             margin-bottom: 50px;
         }
 
-        .event-card {
+        .feature-card {
             width: 280px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 15px;
@@ -171,38 +169,38 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .event-card:hover {
+        .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(220, 53, 69, 0.15);
-            box-shadow: 0 15px 30px rgba(220, 53, 69, 0.3);
-            border-color: #dc3545;
+            background: rgba(76, 175, 80, 0.15);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.3);
+            border-color: #4caf50;
         }
 
-        .year {
+        .feature-number {
             display: inline-block;
-            background: linear-gradient(90deg, #dc3545, #ff6b6b);
+            background: linear-gradient(90deg, #4caf50, #81c784);
             color: white;
-            padding: 5px 15px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-weight: bold;
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
 
-        .event-name {
+        .feature-name {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #ff6b6b;
+            color: #81c784;
             min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .event-icon {
+        .feature-icon {
             font-size: 3.5rem;
             margin: 20px 0;
-            color: #dc3545;
+            color: #4caf50;
         }
 
         .click-info {
@@ -231,13 +229,13 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #0c0c0c, #1a1a2e);
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
             margin: 5% auto;
             padding: 30px;
             border-radius: 20px;
             width: 90%;
             max-width: 700px;
-            border: 2px solid #dc3545;
+            border: 2px solid #4caf50;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             position: relative;
             animation: slideUp 0.4s;
@@ -260,20 +258,13 @@
         }
 
         .close:hover {
-            color: #dc3545;
+            color: #4caf50;
         }
 
         #modalTitle {
-            color: #ff6b6b;
+            color: #81c784;
             margin-bottom: 5px;
             font-size: 2.2rem;
-        }
-
-        #modalYear {
-            font-size: 1.3rem;
-            color: #ffd93d;
-            margin-bottom: 25px;
-            font-weight: bold;
         }
 
         #modalInfo {
@@ -292,7 +283,7 @@
             max-height: 300px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(220, 53, 69, 0.5);
+            border: 2px solid rgba(76, 175, 80, 0.5);
         }
 
         /* Navegación entre páginas */
@@ -307,7 +298,7 @@
         }
 
         .nav-btn {
-            background: linear-gradient(135deg, #dc3545, #ff6b6b);
+            background: linear-gradient(135deg, #4caf50, #81c784);
             color: white;
             border: none;
             padding: 12px 25px;
@@ -319,12 +310,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
 
         .nav-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.6);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
         }
 
         .nav-btn:active {
@@ -354,12 +345,12 @@
 
         /* Responsive */
         @media (max-width: 1100px) {
-            .event-card {
+            .feature-card {
                 width: calc(50% - 40px);
                 text-align: left;
             }
             
-            .event-name {
+            .feature-name {
                 justify-content: flex-start;
                 min-height: auto;
             }
@@ -372,7 +363,7 @@
                 gap: 10px;
             }
             
-            .event-card {
+            .feature-card {
                 width: 100%;
             }
             
@@ -406,15 +397,15 @@
                 font-size: 1.8rem;
             }
             
-            .event-card {
+            .feature-card {
                 padding: 15px;
             }
             
-            .event-name {
+            .feature-name {
                 font-size: 1.3rem;
             }
             
-            .event-icon {
+            .feature-icon {
                 font-size: 2.8rem;
             }
             
@@ -429,42 +420,41 @@
         <!-- Página 1: Introducción -->
         <div class="page active" id="page1">
             <header>
-                <h1><i class="fas fa-globe-americas"></i> La Guerra Fría: Los Años 50</h1>
-                <p class="subtitle">El mundo dividido en dos bloques antagónicos</p>
+                <h1><i class="fas fa-language"></i> El Método Audiolingual</h1>
+                <p class="subtitle">Aprender idiomas a través de hábitos y repetición</p>
             </header>
 
             <div class="intro-container">
                 <div class="intro-image">
-                    <!-- Imagen representativa de la Guerra Fría -->
-                    <img src="img1.jpg" alt="Mapa mundo dividido Guerra Fría">
+                    <img src="img0.jpg" alt="Clase de idiomas años 50">
                 </div>
                 
                 <div class="intro-text">
-                    <h2>¿Qué fue la Guerra Fría?</h2>
-                    <p>La <strong>Guerra Fría</strong> fue un período de tensión política, económica y militar entre los Estados Unidos y la Unión Soviética que duró desde 1947 hasta 1991. Se llamó "fría" porque nunca hubo un enfrentamiento militar directo entre las dos superpotencias.</p>
+                    <h2>¿Qué es el Método Audiolingual?</h2>
+                    <p>El <strong>Método Audiolingual</strong> fue un enfoque revolucionario para la enseñanza de idiomas que surgió en Estados Unidos durante los años 1940-1950, alcanzando su máxima popularidad en los años 60.</p>
                     
-                    <p>La década de 1950 fue crucial para definir las reglas del juego: se establecieron las alianzas militares, comenzó la carrera armamentística nuclear y se consolidó la división del mundo en dos bloques ideológicos antagónicos.</p>
+                    <p>Nació de la necesidad militar durante la Segunda Guerra Mundial de enseñar idiomas rápidamente a soldados. Se basaba en dos pilares: el <strong>estructuralismo lingüístico</strong> y el <strong>conductismo psicológico</strong>.</p>
                     
                     <div class="key-facts">
                         <div class="fact">
-                            <i class="fas fa-flag-usa"></i>
-                            <h3>EE.UU.</h3>
-                            <p>Capitalismo, Democracia, OTAN</p>
+                            <i class="fas fa-history"></i>
+                            <h3>Origen</h3>
+                            <p>Segunda Guerra Mundial (1940s)</p>
                         </div>
                         <div class="fact">
-                            <i class="fas fa-hammer"></i>
-                            <h3>URSS</h3>
-                            <p>Comunismo, Planificación, Pacto de Varsovia</p>
+                            <i class="fas fa-brain"></i>
+                            <h3>Base Teórica</h3>
+                            <p>Estructuralismo + Conductismo</p>
                         </div>
                         <div class="fact">
-                            <i class="fas fa-balance-scale"></i>
-                            <h3>Equilibrio</h3>
-                            <p>Carrera armamentística</p>
+                            <i class="fas fa-volume-up"></i>
+                            <h3>Enfoque</h3>
+                            <p>Habilidades orales primero</p>
                         </div>
                         <div class="fact">
-                            <i class="fas fa-rocket"></i>
-                            <h3>Espacio</h3>
-                            <p>Carrera espacial</p>
+                            <i class="fas fa-redo"></i>
+                            <h3>Técnica Clave</h3>
+                            <p>Repetición y drills</p>
                         </div>
                     </div>
                 </div>
@@ -472,29 +462,28 @@
 
             <div class="navigation">
                 <button class="nav-btn" id="nextPageBtn">
-                    Ver Línea de Tiempo <i class="fas fa-arrow-right"></i>
+                    Ver Características Principales <i class="fas fa-arrow-right"></i>
                 </button>
                 <div class="page-indicator">Página 1 de 2</div>
             </div>
         </div>
 
-        <!-- Página 2: Línea de Tiempo -->
+        <!-- Página 2: Características Principales -->
         <div class="page" id="page2">
             <header>
-                <h1><i class="fas fa-timeline"></i> Línea de Tiempo: Guerra Fría 1950</h1>
-                <p class="subtitle">Los eventos clave que definieron la década</p>
+                <h1><i class="fas fa-list-alt"></i> Características del Método Audiolingual</h1>
+                <p class="subtitle">Los elementos clave que definieron este método</p>
             </header>
 
-            <div class="timeline" id="timelineContainer">
-                <!-- Las tarjetas de eventos se generarán con JavaScript -->
+            <div class="features-container" id="featuresContainer">
+                <!-- Las tarjetas de características se generarán con JavaScript -->
             </div>
 
             <!-- Modal para mostrar información detallada -->
             <div id="infoModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 id="modalTitle">Título del Evento</h2>
-                    <p id="modalYear"></p>
+                    <h2 id="modalTitle">Título de la Característica</h2>
                     <div id="modalInfo">
                         <!-- Información detallada aparecerá aquí -->
                     </div>
@@ -513,123 +502,120 @@
         </div>
 
         <footer>
-            <p>Guerra Fría en los Años 50 • Historia Contemporánea</p>
+            <p>Presentación sobre el Método Audiolingual • Metodología de la Enseñanza de Idiomas</p>
             <p>Be Wise English School</p>
         </footer>
     </div>
 
     <script>
-        // Datos de los eventos de la Guerra Fría en los años 50
-        const eventosGuerraFria = [
+        // Datos traducidos y resumidos del Método Audiolingual
+        const caracteristicasAudiolingual = [
             {
-                year: 1949,
-                name: "Creación de la OTAN",
-                icon: "fas fa-shield-alt",
-                info: "El 4 de abril de 1949, Estados Unidos y 11 países más firmaron el Tratado del Atlántico Norte, creando la Organización del Tratado del Atlántico Norte (OTAN). Esta alianza militar defensiva fue creada para contener la expansión soviética en Europa Occidental.",
+                id: 1,
+                title: "Origen Histórico",
+                icon: "fas fa-history",
+                info: "El método surgió durante la Segunda Guerra Mundial (1942) con el 'Army Specialized Training Program'. Necesitaban enseñar idiomas rápidamente a soldados. Después de la guerra, Charles Fries en la Universidad de Michigan lo desarrolló formalmente, combinando estructuralismo lingüístico con psicología conductista.",
+                img: "img1.jpg"
+            },
+            {
+                id: 2,
+                title: "Teoría del Lenguaje",
+                icon: "fas fa-comments",
+                info: "Basado en el ESTRUCTURALISMO LINGÜÍSTICO: El lenguaje es un sistema de estructuras relacionadas (fonemas → morfemas → palabras → frases). 'El lenguaje es habla, no escritura' (Brooks, 1964). Se enfoca en patrones y estructuras más que en vocabulario. Prioriza lo oral sobre lo escrito porque los niños aprenden a hablar antes de escribir.",
                 img: "img2.jpg"
             },
             {
-                year: 1950,
-                name: "Guerra de Corea",
-                icon: "fas fa-bomb",
-                info: "El 25 de junio de 1950, Corea del Norte (apoyada por China y la URSS) invadió Corea del Sur (apoyada por EE.UU. y la ONU). Fue la primera 'guerra caliente' de la Guerra Fría. Terminó en 1953 con un armisticio que mantuvo la división en el paralelo 38.",
+                id: 3,
+                title: "Teoría del Aprendizaje",
+                icon: "fas fa-brain",
+                info: "Basado en el CONDUCTISMO PSICOLÓGICO: Aprender un idioma = formar hábitos mecánicos. Proceso: ESTÍMULO → RESPUESTA → REFUERZO. La repetición crea hábitos correctos. Los errores son 'malos hábitos' que deben evitarse. 'Práctica hace al maestro' - se necesitan drill, drill y más drill (Fries).",
                 img: "img3.jpg"
             },
             {
-                year: 1953,
-                name: "Muerte de Stalin y Bomba H Soviética",
-                icon: "fas fa-radiation",
-                info: "El 5 de marzo de 1953 murió Iósif Stalin, líder de la URSS. Ese mismo año, la Unión Soviética probó su primera bomba de hidrógeno, igualando la capacidad nuclear de Estados Unidos y escalando la carrera armamentística.",
-                img: "img6.jpg"
+                id: 4,
+                title: "Técnicas Principales: DRILLS",
+                icon: "fas fa-redo",
+                info: "Los 'drills' o ejercicios de repetición son el corazón del método. Tipos: 1) REPETICIÓN (repetir oraciones), 2) INFLECCIÓN (cambiar formas: I eat → He eats), 3) SUSTITUCIÓN (cambiar palabras), 4) TRANSFORMACIÓN (afirmativo → negativo), 5) EXPANSIÓN (agregar palabras), 6) INTEGRACIÓN (unir oraciones). Se practican en coro e individualmente.",
+                img: "img4.jpg"
             },
             {
-                year: 1955,
-                name: "Pacto de Varsovia",
-                icon: "fas fa-handshake",
-                info: "El 14 de mayo de 1955, la URSS y 7 países satélites de Europa del Este firmaron el Pacto de Varsovia, una alianza militar en respuesta a la OTAN. Esto formalizó la división de Europa en dos bloques militares antagónicos.",
-                img: "img8.jpg"
-            },
-            {
-                year: 1956,
-                name: "Crisis de Suez y Revolución Húngara",
-                icon: "fas fa-fire",
-                info: "Doble crisis: Egipto nacionalizó el Canal de Suez, provocando una intervención de Francia, Reino Unido e Israel. Simultáneamente, Hungría intentó separarse del Pacto de Varsovia, pero fue aplastada por tanques soviéticos.",
-                img: "img10.jpg"
-            },
-            {
-                year: 1957,
-                name: "Lanzamiento del Sputnik 1",
-                icon: "fas fa-satellite",
-                info: "El 4 de octubre de 1957, la URSS lanzó el primer satélite artificial, el Sputnik 1. Esto inició la carrera espacial y provocó un 'shock' en Estados Unidos, que respondió creando la NASA en 1958.",
-                img: "img11.jpg"
-            },
-            {
-                year: 1958,
-                name: "Creación de la NASA",
-                icon: "fas fa-rocket",
-                info: "En respuesta al Sputnik soviético, EE.UU. creó la Administración Nacional de Aeronáutica y del Espacio (NASA) el 29 de julio de 1958. Marcó el inicio formal de la carrera espacial entre las dos superpotencias.",
-                img: "img13.jpg"
-            },
-            {
-                year: 1959,
-                name: "Revolución Cubana",
-                icon: "fas fa-star",
-                info: "El 1 de enero de 1959, Fidel Castro tomó el poder en Cuba tras derrocar a Batista. Inicialmente ambiguo, Castro se alineó finalmente con la URSS, estableciendo el primer estado comunista en el hemisferio occidental.",
-                img: "img15.jpg"
-            },
-            {
-                year: 1950,
-                name: "Macartismo en EE.UU.",
-                icon: "fas fa-user-secret",
-                info: "Entre 1950-1954, el senador Joseph McCarthy lideró una 'caza de brujas' contra supuestos comunistas en el gobierno, Hollywood y otras instituciones estadounidenses. Creó un clima de paranoia y represión política.",
-                img: "img4.JPEG"
-            },
-            {
-                year: 1954,
-                name: "Conferencia de Ginebra",
-                icon: "fas fa-gavel",
-                info: "Conferencia que puso fin a la Guerra de Indochina y dividió Vietnam en Norte (comunista) y Sur (capitalista). También reconoció la independencia de Laos y Camboya, pero sembró las semillas para la Guerra de Vietnam.",
-                img: "img7.jpg"
-            },
-            {
-                year: 1955,
-                name: "Cumbre de Ginebra",
+                id: 5,
+                title: "Diálogos Memorizados",
                 icon: "fas fa-users",
-                info: "Primera cumbre entre EE.UU., URSS, Reino Unido y Francia después de la Segunda Guerra Mundial. Aunque no produjo acuerdos concretos, marcó un breve 'deshielo' en las relaciones Este-Oeste.",
-                img: "img9.jpg"
-            },
-            {
-                year: 1958,
-                name: "Crisis de Berlín",
-                icon: "fas fa-wall",
-                info: "La URSS exigió la retirada de las tropas occidentales de Berlín Occidental, amenazando con convertir el acceso a la ciudad en control soviético. La crisis escaló pero se resolvió temporalmente, aunque preparó el terreno para el Muro de Berlín en 1961.",
-                img: "img14.jpg"
-            },
-            {
-                year: 1959,
-                name: "Kitchen Debate",
-                icon: "fas fa-home",
-                info: "En la Exposición Nacional Americana en Moscú, el vicepresidente Nixon y el premier soviético Jrushchov debatieron sobre los méritos del capitalismo vs comunismo frente a una cocina modelo americana. Fue un emblemático enfrentamiento propagandístico.",
-                img: "img16.jpg"
-            },
-            {
-                year: 1950,
-                name: "Carrera Armamentística",
-                icon: "fas fa-crosshairs",
-                info: "Ambas superpotencias desarrollaron arsenales nucleares masivos. EE.UU. probó la primera bomba de hidrógeno en 1952, seguida por la URSS en 1953. Se estableció la doctrina de 'Destrucción Mutua Asegurada' (MAD).",
+                info: "Cada lección comienza con un diálogo modelo que los estudiantes memorizan línea por línea. El diálogo contiene las estructuras gramaticales clave. Primero se escucha, luego se repite, finalmente se memoriza. Después se adapta cambiando palabras clave. Los diálogos contextualizan las estructuras y muestran aspectos culturales.",
                 img: "img5.jpg"
             },
             {
-                year: 1957,
-                name: "Doctrina Eisenhower",
-                icon: "fas fa-book",
-                info: "El presidente Eisenhower anunció que EE.UU. proporcionaría ayuda militar y económica a los países de Oriente Medio que resistieran la 'agresión comunista'. Reflejaba la política de contención global del comunismo.",
+                id: 6,
+                title: "Corrección Inmediata",
+                icon: "fas fa-exclamation-circle",
+                info: "Los errores se corrigen INMEDIATAMENTE para evitar que se conviertan en 'malos hábitos'. La corrección es directa y sin explicaciones largas. El refuerzo positivo se da por respuestas correctas ('¡Muy bien!', 'Excelente'). Se evita que los estudiantes cometan errores desde el principio.",
+                img: "img6.jpg"
+            },
+            {
+                id: 7,
+                title: "Gramática Inductiva",
+                icon: "fas fa-lightbulb",
+                info: "NO se enseñan reglas gramaticales explícitamente. Los estudiantes INFIEREN las reglas a través de muchos ejemplos y práctica. Después de repetir 'He walks, She talks, It rains' muchas veces, deducen que tercera persona singular lleva -s. Es aprendizaje por analogía, no por análisis.",
+                img: "img7.jpg"
+            },
+            {
+                id: 8,
+                title: "Uso Mínimo de L1",
+                icon: "fas fa-ban",
+                info: "Se desalienta el uso de la lengua materna (L1) en clase. La clase se desarrolla casi completamente en el idioma objetivo. La traducción se evita. Se usan gestos, imágenes y contexto para dar significado. Esto fuerza a pensar directamente en el idioma objetivo.",
+                img: "img8.jpg"
+            },
+            {
+                id: 9,
+                title: "Orden de Habilidades",
+                icon: "fas fa-sort-amount-down",
+                info: "1. ESCUCHAR (comprensión auditiva) → 2. HABLAR (producción oral) → 3. LEER → 4. ESCRIBIR. Las habilidades escritas se introducen solo después de dominar las orales. En etapas iniciales, no se muestra texto escrito para evitar interferencia con la pronunciación.",
+                img: "img9.jpg"
+            },
+            {
+                id: 10,
+                title: "Rol del Estudiante",
+                icon: "fas fa-user-graduate",
+                info: "Rol REACTIVO: responde a estímulos del profesor. No inicia comunicación. Imita, repite, responde a drills. No necesita entender todo al principio - la comprensión viene con la práctica. Es como un 'organismo' que forma hábitos mediante repetición. Poco control sobre contenido o ritmo.",
+                img: "img10.jpg"
+            },
+            {
+                id: 11,
+                title: "Rol del Profesor",
+                icon: "fas fa-chalkboard-teacher",
+                info: "Rol CENTRAL y ACTIVO: modelo del idioma, director de la clase, fuente de input correcto. Controla dirección, ritmo y corrección. Varía drills para mantener atención. Usa refuerzo positivo. Sigue secuencia estricta: diálogo → drills → práctica controlada. Dominio total del proceso.",
+                img: "img11.jpg"
+            },
+            {
+                id: 12,
+                title: "Fortalezas",
+                icon: "fas fa-thumbs-up",
+                info: "1. Desarrolla BUENA PRONUNCIACIÓN y fluidez oral. 2. Da CONFIANZA con frases memorizadas. 3. Efectivo para aprendizaje ACELERADO. 4. Bueno para PRINCIPIANTES. 5. Enseña ESTRUCTURAS ÚTILES. 6. Método SISTEMÁTICO y organizado. 7. Útil para situaciones CONTROLADAS.",
                 img: "img12.jpg"
+            },
+            {
+                id: 13,
+                title: "Críticas y Debilidades",
+                icon: "fas fa-thumbs-down",
+                info: "1. MECÁNICO y ABURRIDO (repetición excesiva). 2. Estudiantes como 'ROBOTS' sin creatividad. 3. Poca ATENCIÓN a comunicación REAL. 4. No prepara para situaciones IMPREVISTAS. 5. Subestima COGNICIÓN humana. 6. Gramática solo por repetición, no por entendimiento. 7. Chomsky: 'El lenguaje no es una estructura de hábitos'.",
+                img: "img13.jpg"
+            },
+            {
+                id: 14,
+                title: "Legado Actual",
+                icon: "fas fa-code-branch",
+                info: "Aunque el método puro ya no se usa, su LEGADO PERDURA: 1. Drills adaptados en apps (apps de idiomas). 2. Repetición espaciada en plataformas digitales. 3. Enfoque en pronunciación. 4. Práctica controlada de estructuras. 5. Técnicas integradas en métodos comunicativos. 6. Importancia de input oral.",
+                img: "img14.jpg"
+            },
+            {
+                id: 15,
+                title: "Ejemplo Práctico",
+                icon: "fas fa-play-circle",
+                info: "LECCIÓN TÍPICA: 1. Escuchar diálogo '¿Qué hiciste anoche? - Vi TV'. 2. Repetir en coro. 3. Memorizar. 4. Adaptar: cambiar 'TV' por 'una película'. 5. Drills: 'I watched TV' → 'I watched a movie' → 'She watched a movie'. 6. Preguntas: 'Did you watch TV?' → 'Yes, I did'. 7. Práctica en parejas. SIN EXPLICACIONES GRAMATICALES.",
+                img: "img15.jpg"
             }
         ];
-
-        // Ordenar por año
-        eventosGuerraFria.sort((a, b) => a.year - b.year);
 
         // Variables de control
         let currentPage = 1;
@@ -637,40 +623,38 @@
         const page2 = document.getElementById('page2');
         const nextPageBtn = document.getElementById('nextPageBtn');
         const prevPageBtn = document.getElementById('prevPageBtn');
-        const timelineContainer = document.getElementById('timelineContainer');
+        const featuresContainer = document.getElementById('featuresContainer');
         const modal = document.getElementById('infoModal');
         const modalTitle = document.getElementById('modalTitle');
-        const modalYear = document.getElementById('modalYear');
         const modalInfo = document.getElementById('modalInfo');
         const modalImg = document.getElementById('modalImg');
         const closeBtn = document.querySelector('.close');
 
-        // Crear tarjetas de eventos
-        function crearTarjetasEventos() {
-            eventosGuerraFria.forEach(evento => {
+        // Crear tarjetas de características
+        function crearTarjetasCaracteristicas() {
+            caracteristicasAudiolingual.forEach(caracteristica => {
                 const card = document.createElement('div');
-                card.className = 'event-card';
+                card.className = 'feature-card';
                 card.innerHTML = `
-                    <div class="year">${evento.year}</div>
-                    <div class="event-name">${evento.name}</div>
-                    <div class="event-icon">
-                        <i class="${evento.icon}"></i>
+                    <div class="feature-number">${caracteristica.id}</div>
+                    <div class="feature-name">${caracteristica.title}</div>
+                    <div class="feature-icon">
+                        <i class="${caracteristica.icon}"></i>
                     </div>
                     <div class="click-info"></div>
                 `;
                 
-                card.addEventListener('click', () => mostrarInfoEvento(evento));
-                timelineContainer.appendChild(card);
+                card.addEventListener('click', () => mostrarInfoCaracteristica(caracteristica));
+                featuresContainer.appendChild(card);
             });
         }
 
         // Mostrar información en modal
-        function mostrarInfoEvento(evento) {
-            modalTitle.textContent = evento.name;
-            modalYear.textContent = `Año: ${evento.year}`;
-            modalInfo.textContent = evento.info;
-            modalImg.src = evento.img;
-            modalImg.alt = evento.name;
+        function mostrarInfoCaracteristica(caracteristica) {
+            modalTitle.textContent = caracteristica.title;
+            modalInfo.innerHTML = `<p>${caracteristica.info}</p>`;
+            modalImg.src = caracteristica.img;
+            modalImg.alt = caracteristica.title;
             modal.style.display = 'block';
         }
 
@@ -697,8 +681,8 @@
 
         // Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializar línea de tiempo
-            crearTarjetasEventos();
+            // Inicializar características
+            crearTarjetasCaracteristicas();
             
             // Navegación
             nextPageBtn.addEventListener('click', () => cambiarPagina(2));
